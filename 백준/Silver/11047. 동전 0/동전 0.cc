@@ -6,19 +6,27 @@ int main(){
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int N, K, idx = 0, cnt = 0;
+    int N, K, cnt = 0;
     cin >> N >> K;
 
     int arr[N+1];
     for(int i = N-1; i >= 0; i--)
         cin >> arr[i];
 
-    while(K > 0){
-        if(arr[idx] <= K){
-            K-= arr[idx];
-            cnt++;
+    // int idx = 0;
+    // while(K > 0){
+    //     if(arr[idx] <= K){
+    //         K-= arr[idx];
+    //         cnt++;
+    //     }
+    //     else idx++;
+    // }
+
+    for(int i = 0; i < N; i++){
+        if(arr[i] <= K){
+            cnt += (K/arr[i]);
+            K %= arr[i];
         }
-        else idx++;
     }
 
     cout << cnt;
