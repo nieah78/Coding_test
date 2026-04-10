@@ -3,15 +3,6 @@
 #include <algorithm>
 using namespace std;
 
-bool compare(vector<int> &v1, vector<int> &v2){
-    if(v1[0] == v2[0]){
-        return v1[1] < v2[1];
-    }
-    else{
-        return v1[0] < v2[0];
-    }
-}
-
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
@@ -20,16 +11,16 @@ int main(){
     int N;
     cin >> N;
 
-    vector<vector<int>> v(N, vector<int>(2));
+    vector<pair<int, int>> v(N);
 
     for(int i = 0; i < N; i++){
-        cin >> v[i][0] >> v[i][1];
+        cin >> v[i].first >> v[i].second;
     }
 
-    sort(v.begin(), v.end(), compare);
-    
+    sort(v.begin(), v.end());
+
     for(int i = 0; i < N; i++){
-        cout << v[i][0] << " " << v[i][1] << "\n";
+        cout << v[i].first << " " << v[i].second << "\n";
     }
     return 0;
 }
