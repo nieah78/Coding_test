@@ -9,7 +9,7 @@ bool cmp(string a, string b){
         return a < b;
     }
     else{
-        return a.size() < b.size();
+        return a.length() < b.length();
     }
 }
 
