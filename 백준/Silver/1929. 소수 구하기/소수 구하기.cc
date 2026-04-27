@@ -1,15 +1,6 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-
-bool check(int a){
-    if(a < 2) return false;
-    if(!(a % 2) && a != 2) return false;
-
-    for(int j = 2; j*j <= a; j++){
-        if(!(a % j)) return false;
-    }
-    return true;
-}
 
 int main(){
     ios::sync_with_stdio(false);
@@ -18,9 +9,20 @@ int main(){
 
     int M, N;
     cin >> M >> N;
+    vector<bool> check(N+1, true);
+
+    check[0] = check[1] = false;
+
+    for(int i = 2; i*i <= N; ++i){
+        if(check[i]){
+            for(int j = i*i; j <= N; j += i){
+                check[j] = false;
+            }
+        }
+    }
 
     for(int i = M; i <= N; i++){
-        if(check(i)) cout << i << "\n";
+        if(check[i]) cout << i << "\n";
     }
     
     return 0;
